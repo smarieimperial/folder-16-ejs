@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+	<style type="text/css">
+		.green {
+			background-color: green;
+		}
+
+		.yellow {
+			background-color: yellow;
+		}
+
+		.red {
+			background-color: red;
+		}
+	</style>
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<div class="col-sm-8">
+			
+				<div class="jumbotron">
+					<h1>This is great</h1>
+					<p>Welcome to templating using EJS</p>
+				</div>
+
+				<div>
+					<ul>
+					    <% for(var i=0; i<data.length; i++) { %>
+
+					    	<h2>ONE WAY</h2>
+
+					        <li class="
+					        	<% if (data[i].rating > 3) { %>
+					        		green
+					        	<% }else if(data[i].rating == 3){ %>
+					        		yellow
+					        	<% }else { %>
+					        		red
+					        	<% } %>
+					        ">
+					        	Name: <%= data[i].drink %> - Rating: <%= data[i].rating %>/5 - Sug: <%= data[i].sugar %> - Cals: <%= data[i].calories %>
+					        		
+					        </li>
+
+					        <h2>ANOTHER WAY</h2>
+
+					        <% if (data[i].rating > 3) { %>
+					        	<li class="green">
+					        <% }else if(data[i].rating == 3){ %>
+					        	<li class="yellow">
+					        <% }else { %>
+					        	<li class="red">
+					        <% } %>
+					        	Name: <%= data[i].drink %> - Rating: <%= data[i].rating %>/5 - Sug: <%= data[i].sugar %> - Cals: <%= data[i].calories %>
+					        </li>
+					    <% } %>
+					</ul>
+				</div>
+				
+			</div>
+			<div class="col-sm-4">
+				
+				<div class="well">
+					<h3>Look I'm A Sidebar!</h3>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+</body>
+</html>
